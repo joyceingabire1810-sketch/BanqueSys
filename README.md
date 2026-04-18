@@ -34,4 +34,4 @@ Il représente les principales entités d’une banque : agences, comptes, clien
 ---
 
 ## Auteur  
-Projet réalisé dans le cadre d’un exercice académique.
+Projet réalisé dans le cadre d’un exercice académique par Joyce Ingabire.
