@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modèle BanqueSystem</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      color: #222;
+      background-color: #fff;
+    }
+
+    h1, h2 {
+      color: #1f3b5b;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+
+    th, td {
+      border: 1px solid #bfc7d1;
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background-color: #e9eef5;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Modèle de classes - BanqueSystem</h1>
+
+  <h2>Relations entre classes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Classe A</th>
+        <th>Relation</th>
+        <th>Classe B</th>
+        <th>Justification</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Agence</td>
+        <td>hérite de</td>
+        <td>Entite</td>
+        <td>Agence étend Entite.</td>
+      </tr>
+      <tr>
+        <td>Banque</td>
+        <td>hérite de</td>
+        <td>Entite</td>
+        <td>Banque étend Entite.</td>
+      </tr>
+      <tr>
+        <td>Credit</td>
+        <td>hérite de</td>
+        <td>Transaction</td>
+        <td>Credit est une spécialisation de Transaction.</td>
+      </tr>
+      <tr>
+        <td>Debit</td>
+        <td>hérite de</td>
+        <td>Transaction</td>
+        <td>Debit est une spécialisation de Transaction.</td>
+      </tr>
+      <tr>
+        <td>Banque</td>
+        <td>possède un</td>
+        <td>Agence</td>
+        <td>Une banque gère plusieurs agences.</td>
+      </tr>
+      <tr>
+        <td>Banque</td>
+        <td>possède un</td>
+        <td>Distributeur</td>
+        <td>Une banque contient des distributeurs.</td>
+      </tr>
+      <tr>
+        <td>Agence</td>
+        <td>possède un</td>
+        <td>Compte</td>
+        <td>Une agence gère des comptes.</td>
+      </tr>
+      <tr>
+        <td>Compte</td>
+        <td>possède un</td>
+        <td>Carte</td>
+        <td>Un compte peut avoir plusieurs cartes.</td>
+      </tr>
+      <tr>
+        <td>Compte</td>
+        <td>possède un</td>
+        <td>Transaction</td>
+        <td>Un compte génère des transactions.</td>
+      </tr>
+      <tr>
+        <td>Carte</td>
+        <td>possède un</td>
+        <td>Personne</td>
+        <td>Une carte est associée à une personne.</td>
+      </tr>
+      <tr>
+        <td>Personne</td>
+        <td>possède un</td>
+        <td>Compte</td>
+        <td>Une personne peut avoir plusieurs comptes.</td>
+      </tr>
+      <tr>
+        <td>PersonneCompte</td>
+        <td>possède un</td>
+        <td>Personne</td>
+        <td>Classe d’association entre Personne et Compte.</td>
+      </tr>
+      <tr>
+        <td>PersonneCompte</td>
+        <td>possède un</td>
+        <td>Compte</td>
+        <td>Classe d’association entre Personne et Compte.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Entités, attributs et comportements</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Entité</th>
+        <th>Attributs (3-5)</th>
+        <th>Comportements (1-3)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Entite</td>
+        <td>Nom, Adresse, Telephone, Email</td>
+        <td>Afficher(), ModifierCoordonnees()</td>
+      </tr>
+      <tr>
+        <td>Agence</td>
+        <td>Nom, Adresse, Telephone, Email (hérités de Entite)</td>
+        <td>CreerCompte(), RechercherCompte(), ListerComptes()</td>
+      </tr>
+      <tr>
+        <td>Banque</td>
+        <td>Nom, Adresse, Telephone, Email (hérités de Entite)</td>
+        <td>AjouterAgence(), SupprimerAgence(), ListerAgence()</td>
+      </tr>
+      <tr>
+        <td>Distributeur</td>
+        <td>Code, Localisation</td>
+        <td>Distributeur()</td>
+      </tr>
+      <tr>
+        <td>Personne</td>
+        <td>Nom, Prenom, Sexe</td>
+        <td>Afficher(), AjouterCompte(), ListerComptes()</td>
+      </tr>
+      <tr>
+        <td>Compte</td>
+        <td>NumeroCompte, Solde, DateOuverture, Banque</td>
+        <td>Crediter(), Debiter(), Transferer()</td>
+      </tr>
+      <tr>
+        <td>PersonneCompte</td>
+        <td>Role, LimiteJournalier</td>
+        <td>ModifierRole(), ModifierLimite(), VerifierPlafond()</td>
+      </tr>
+      <tr>
+        <td>Carte</td>
+        <td>NumeroCarte, DateEmission, DateExpiration, CVC, Bloquee</td>
+        <td>BloqueCarte(), Payer()</td>
+      </tr>
+      <tr>
+        <td>Transaction</td>
+        <td>Montant, Iban, Libelle</td>
+        <td>Aucun comportement défini</td>
+      </tr>
+      <tr>
+        <td>Credit</td>
+        <td>Montant, Iban, Libelle, Source</td>
+        <td>Crediter()</td>
+      </tr>
+      <tr>
+        <td>Debit</td>
+        <td>Montant, Iban, Libelle, Destination</td>
+        <td>Debiter()</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
